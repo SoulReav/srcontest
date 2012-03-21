@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css">
+<title>Главная страница</title>
+<script>
+ function SubmFunc(event) {
+ if (event.keyCode == 13) {
+ var myForm = document.getElementById('AuthForm');
+ myForm.submit();
+ }
+ }
+</script>
+
+</head>
+<body>
+<div id= "Top">
+	<div class = "container">
+	{% if user.is_authenticated %}
+	<div class="pull-left"><h6 id="TopInfoBar">Добро пожаловать, {{ user.username }}.&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Профиль</a>&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Выйти?</a></h6></div>
+
+	{% else %}
+		<form method="POST" action="/accounts/login/" class="pull-left" id="AuthForm" onKeyUp = 'SubmFunc(event)'>
+		{% csrf_token %}
+			<input class="input-medium" type="text" name="login" placeholder="Пользователь"/>
+			<input class="input-medium" type="password" name="password" placeholder="Пароль"/>
+		</form>
+	{% endif %}
+	
+	<div class="pull-right"><h6 id="TopInfoBar">Карта сайта:&ensp;&ensp;|&ensp;&ensp;<a id="links" href="/accounts/logout/">Конкурсы</a>&ensp;&ensp;|&ensp;&ensp;<a id="links" href="/accounts/logout/">Правила</a>&ensp;&ensp;|&ensp;&ensp;<a id="links" href="/accounts/logout/">ТОП</a>&ensp;&ensp;|</h6></div>
+	</div>
+</div>
+
+<div id= "middle-bar">
+
+	<div class = "container" >
+
+		<div class="row">
+			
+			<div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
+			<a href="/"><img id="logo"src="{{ MEDIA_URL }}img/image.jpg"></a>
+			</div>
+			
+			<div id= "m-top" class = "span7">
+			<H2 id="TitleContest" >Текущий конкурс: Silent Hill</H2>
+			<p id="DescriptionContest"><b>Жанр:</b> survival horror <p>
+			<p id="DescriptionContest"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.<p>
+			<p id="DescriptionContest"><b>Дата завершения:</b> 6 марта 2012 года <p>
+			<div class="pull-right"><a  href="/accounts/logout/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<div id= "content-bar">
+
+	<div class = "container" >
+
+		<div class="row">
+			
+			<div class = "span9" id="logo-bar" name="logo-bar">
+			
+				{% block detail-view %}{% endblock %}
+				
+				{% block first-post %}{% endblock %}
+			
+				{% block text-post %}{% endblock %}
+
+	</div>
+
+</div>
+
+<div id="footer-pass"><div>
+
+<div class="bottombar" id = "footer">
+    <footer>
+      <center><p><h6 id="footer-text">Сайт литературных конкурсов. Разработан Soul Reaver</h6></p><center>
+    </footer>
+</div>
+
+</body>
+</html>

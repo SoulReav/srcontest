@@ -1,0 +1,1 @@
+c:\Python27\Python.exe manage.py startapp news

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block first-post %}
+
+				<div id="first-post">
+		
+				<h4 id=bgtitle>{{ public_news.0.title }}</h4>
+				<h5 id = "date"><span class="label label-warning">Новое</span>&nbsp;&nbsp;{{ public_news.0.date }}</h5>
+
+				<div id="post">
+				{{ public_news.0.text_news|linebreaks  }}
+				</div>
+				
+				<div class="pull-right"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Читать дальше...<h6></a></div>
+				
+				</div>
+			
+{% endblock %}
+
+{% block text-post %}
+
+	{% for news in public_news %}
+	{% if not forloop.first %}
+
+				<div id="text-post">
+
+				<h4 id=bgtitle>{{ news.title }}</h4>
+				<h5 id = "date"><span class="label label-warning">Новое</span>&nbsp;&nbsp;{{ news.date }}</h5>
+
+				<div id="post">
+				{{ news.text_news|linebreaks  }}
+				</div>
+				
+				<div class="pull-right"><a href="{{ news.get_absolute_url}}"><h6 id="links">Читать дальше...<h6></a></div>
+	
+				</div>
+				
+	{% endif %}
+
+	{% endfor %}
+	
+{% endblock %}
+

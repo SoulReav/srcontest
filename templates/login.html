@@ -1,0 +1,19 @@
+﻿  <html>
+  <body>
+  
+  {% if error == 'error' %}
+  Введенный логин или пароль не верны.
+  {% endif %}
+  
+  <form action='/accounts/login/' method='post'>
+    <label for="username">Пользователь:</label>
+    <input type="text" name="login" value="" id="username">
+    <label for="password">Пароль:</label>
+    <input type="password" name="password" value="" id="password">
+
+    <input type="submit" value="Войти" />
+
+  </form>
+  
+  </body>
+  </html>
