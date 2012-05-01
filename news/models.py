@@ -2,13 +2,14 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce import models as tinymce_model
 
 # Create your models here.
 
 
 class News(models.Model):
     title = models.CharField(max_length = 70)
-    text_news = models.TextField()
+    text_news = tinymce_model.HTMLField()
     date = models.DateField()
     public = models.BooleanField()
     author = models.ForeignKey(User)

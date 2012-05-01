@@ -5,12 +5,14 @@
 				<div id="first-post">
 		
 				<h4 id=bgtitle>{{ detail_news.title }}</h4>
-				<h5 id = "date"><span class="label label-warning">Новое</span>&nbsp;&nbsp;{{ detail_news.date }}</h5>
-
-				<div id="post">
+				<h5 id = "date"><span class="label label-warning">Новости сайта</span>&nbsp;&nbsp;{{ detail_news.date }}</h5>
+				<hr>
+				<div id="post">{% autoescape off %}
 				{{ detail_news.text_news|linebreaks  }}
+				{% endautoescape %}
 				</div>
-				<div class="pull-right" id="comment-count"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Всего комментариев (3)<h6></a></div>
+				<hr>
+				<div id="more" class="pull-right" id="comment-count"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Всего комментариев (3)<h6></a></div>
 				</div>
 				
 				<br>

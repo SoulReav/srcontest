@@ -29,7 +29,7 @@ color: #ffb750;
 {
 	margin-top: 0px;
 	background-color: #F5F5F5;
-
+	background: url(../img/bodybg.png) repeat;
 	border-bottom-color: rgb(221, 221, 221);
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
@@ -51,7 +51,6 @@ color: #ffb750;
 {
 	margin-top: 30px;
 	margin-bottom: 25px;
-	background-color: #F5F5F5;
 
 }
 
@@ -91,25 +90,44 @@ color: #868686;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.04706);
+	
 }
 
 #first-post
 {
-	margin-left: 10px;
 	margin-top: 20px;
+	background-color: #FFFFFF;
+	padding:20px;
+	padding-bottom:35px;
+}
+
+#first-post hr
+{
+	padding:0px;
+	margin-bottom:0px;
+	margin-top:10px;
 
 }
 
 #text-post
 {
-	margin-left: 10px;
-	margin-top: 45px;
+	margin-top: 25px;
+	background-color: #FFFFFF;
+	padding:20px;
+	padding-bottom:35px;
+}
 
+#text-post hr
+{
+	padding:0px;
+	margin-bottom:0px;
+	margin-top:10px;
 }
 
 #date
 {
-margin-top: 8px;
+margin-top: 10px;
+color: #595959;
 }
 
 #post
@@ -127,27 +145,17 @@ font-size: 13px;
 
 #more
 {
-margin-right: 10px;
+margin-top:8px;
 }
 
 #bgtitle
 {
-background-color: #f2f2f2;
-padding-top: 3px;
-padding-left: 8px;
-margin-left: -8px;
-padding-bottom: 3px;
-border-bottom-style: solid;
-border-bottom-width: 1px;
-border-left-color: rgba(0, 0, 0, 0.05);
-border-left-style: solid;
-border-left-width: 1px;
-border-right-color: rgba(0, 0, 0, 0.05);
-border-right-style: solid;
-border-right-width: 1px;
-border-top-color: rgba(0, 0, 0, 0.15);
-border-bottom-color: rgba(0, 0, 0, 0.05);
-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.03);
+font-size: 14pt;
+color: #595959;
+font-style: normal;
+line-height: 150%;
+font-family: "TitilliumText22LRegular", "Arial";
+font-weight: 400;
 }
 
 #post-bar
@@ -226,7 +234,6 @@ padding: 5px 10px 5px 5px;
 
 #comment 
 {
-
 padding-left: 5px;
 margin-top: 10px;
 width: 100%;
@@ -256,4 +263,9 @@ height: 48px;
 width: 48px;
 margin-right: 15px;
 float: left;
+}
+
+#content-bar
+{
+	background-color: #F5F5F5;
 }
