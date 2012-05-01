@@ -1,0 +1,259 @@
+
+#links
+{
+color: #ffb750;
+
+}
+
+#Top
+{
+	margin-top: 5px;
+	border-bottom-color: rgb(221, 221, 221);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+#AuthForm
+{
+	margin-top: 2px;
+	margin-bottom: -2px;
+}
+
+#TopInfoBar
+{
+	margin-top: 7px;
+	margin-bottom: 12px;
+}
+
+#middle-bar
+{
+	margin-top: 0px;
+	background-color: #F5F5F5;
+
+	border-bottom-color: rgb(221, 221, 221);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.04706);
+}
+
+#logo
+{	
+	margin-top: 0px;
+	background-color: #F5F5F5;
+	border-bottom-color: rgb(221, 221, 221);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	
+	
+}
+
+#m-top
+{
+	margin-top: 30px;
+	margin-bottom: 25px;
+	background-color: #F5F5F5;
+
+}
+
+#TitleContest
+{
+	font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+	color: #868686;	
+	margin-top: -10px;
+	
+}
+
+#DescriptionContest
+{
+position: relative;
+font-size: 14px;
+padding: 0px 0px 0px 0px;
+margin: 5px 0px 0px 0px;
+color: #868686;
+}
+
+#DescriptionContestMore
+{
+position: relative;
+font-size: 14px;
+padding: 0px 0px 0px 0px;
+margin: -5px 0px 0px 0px;
+color: #868686;
+}
+
+
+#menu-bar
+{
+	margin-top: 15px;
+	margin-left: -60px;
+	margin-bottom: 10px;
+	border-bottom-color: rgb(221, 221, 221);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.04706);
+}
+
+#first-post
+{
+	margin-left: 10px;
+	margin-top: 20px;
+
+}
+
+#text-post
+{
+	margin-left: 10px;
+	margin-top: 45px;
+
+}
+
+#date
+{
+margin-top: 8px;
+}
+
+#post
+{
+	margin-top: 10px;
+	color: #6a6a6a;
+	
+}
+
+#post p
+{
+font-size: 13px;
+}
+
+
+#more
+{
+margin-right: 10px;
+}
+
+#bgtitle
+{
+background-color: #f2f2f2;
+padding-top: 3px;
+padding-left: 8px;
+margin-left: -8px;
+padding-bottom: 3px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-left-color: rgba(0, 0, 0, 0.05);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgba(0, 0, 0, 0.05);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgba(0, 0, 0, 0.15);
+border-bottom-color: rgba(0, 0, 0, 0.05);
+box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.03);
+}
+
+#post-bar
+{
+background-color: rgb(255, 250, 245);
+border-bottom-color: rgba(0, 0, 0, 0.15);
+border-bottom-left-radius: 2px;
+border-bottom-right-radius: 2px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-left-color: rgba(0, 0, 0, 0.15);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgba(0, 0, 0, 0.15);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgba(0, 0, 0, 0.15);
+border-top-left-radius: 2px;
+border-top-right-radius: 2px;
+border-top-style: solid;
+border-top-width: 1px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.04706);
+padding-left: 5px;
+margin-top: 10px;
+width: 100%;
+padding: 5px 0px 5px 5px;
+}
+
+#comment-count
+{
+background-color: rgb(255, 250, 245);
+border-bottom-color: rgba(0, 0, 0, 0.15);
+border-bottom-left-radius: 2px;
+border-bottom-right-radius: 2px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-left-color: rgba(0, 0, 0, 0.15);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgba(0, 0, 0, 0.15);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgba(0, 0, 0, 0.15);
+border-top-left-radius: 2px;
+border-top-right-radius: 2px;
+border-top-style: solid;
+border-top-width: 1px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.04706);
+padding-left: 5px;
+margin-top: 10px;
+
+padding: 5px 5px 5px 5px;
+}
+
+#comment-block
+{
+background-color: rgb(255, 250, 245);
+border-bottom-color: rgba(0, 0, 0, 0.15);
+border-left-color: rgba(0, 0, 0, 0.15);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgba(0, 0, 0, 0.15);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgba(0, 0, 0, 0.15);
+border-top-left-radius: 2px;
+border-top-right-radius: 2px;
+border-top-style: solid;
+border-top-width: 1px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.04706);
+padding-left: 5px;
+margin-top: 10px;
+
+padding: 5px 10px 5px 5px;
+}
+
+#comment 
+{
+
+padding-left: 5px;
+margin-top: 10px;
+width: 100%;
+padding: 5px 0px 0px 5px;
+border-bottom-color: rgba(0, 0, 0, 0.15);
+border-bottom-style: solid;
+border-bottom-width: 1px;
+}
+
+#comment h6
+{
+position: relative;
+font-size: 11px;
+}
+
+#comment p
+{
+position: relative;
+font-size: 12px;
+color: #6a6a6a;
+}
+
+#comment img 
+{
+border: 0px solid #757575;
+height: 48px;
+width: 48px;
+margin-right: 15px;
+float: left;
+}
