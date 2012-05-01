@@ -1,1 +1,1 @@
-c:\Python27\Python.exe manage.py dbshell
+python manage.py shell

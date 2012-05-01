@@ -26,6 +26,9 @@ def main(request):
                 j+=1
         except:
             i = 5
+    public_news.reverse()
+    for p in public_news:
+        print p.pk
                 
     return render_to_response('index.html', {'public_news':public_news}, RequestContext(request))
 

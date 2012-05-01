@@ -1,16 +1,31 @@
 # Django settings for grelka project.
 
 import os.path
-import sys
 
-PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
-sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+_PATH = os.path.abspath(os.path.dirname(__file__))
 
-ADMIN_TOOLS_INDEX_DASHBOARD = 'grelka.dashboard.CustomIndexDashboard'
+MEDIA_ROOT = os.path.join(_PATH, 'files', 'media')
+MEDIA_URL = '/media/'
 
+STATIC_ROOT = ''
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(_PATH, 'files', 'static'),
+    )
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    )
+
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+
+ADMIN_TOOLS_INDEX_DASHBOARD = 'grelka.dashboard.CustomIndexDashboard'
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -49,23 +64,11 @@ SITE_ID = 1
 USE_I18N = True
 
 # If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale
+# calendars according to the current locale.
 USE_L10N = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
-
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/admin/'
-
+# If you set this to False, Django will not use timezone-aware datetimes.
+USE_TZ = True
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'pl4@e12*4j-5rb6%&oc!(!z+ou!iiu#dff)3n*sed#!%r75+4y'
@@ -78,6 +81,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,29 +96,28 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
-    
-        # django 1.2 only
-    'django.contrib.messages.context_processors.messages',
 
     # required by django-admin-tools
     'django.core.context_processors.request',
+    'django.core.context_processors.static',
     )
 
 ROOT_URLCONF = 'grelka.urls'
+
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
+    os.path.join(_PATH, 'templates').replace('\\','/'),
 )
 
 INSTALLED_APPS = (
-                  
+    'admin_tools',
     'admin_tools.theming',
     'admin_tools.menu',
-    'admin_tools.dashboard',  
-                  
+    'admin_tools.dashboard',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -123,9 +126,17 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.comments',
+    'django.contrib.staticfiles',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'grelka.news',
+    'django_xmlrpc',
 
     
 )
+
+XMLRPC_METHODS = (('grelka.news.views.get_users_blogs', 'blogger.getUsersBlogs'),
+                  ('grelka.news.views.get_user_info', 'blogger.getUserInfo'),
+                  ('grelka.news.views.new_post', 'metaWeblog.newPost'),
+                  ('grelka.news.views.edit_post', 'metaWeblog.editPost'),
+                  ('grelka.news.views.delete_post', 'blogger.deletePost'),)
