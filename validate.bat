@@ -1,1 +1,1 @@
-c:\python27\python.exe manage.py validate
+python manage.py validate
