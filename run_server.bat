@@ -1,1 +1,1 @@
-c:\python27\python.exe manage.py runserver 178.214.224.59:8000
+python manage.py runserver 178.214.224.59:8000
