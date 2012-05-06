@@ -5,10 +5,10 @@
 				<div id="first-post">
 		
 				<h4 id=bgtitle>{{ detail_news.title }}</h4>
-				<h5 id = "date"><span class="label label-warning">Новости сайта</span>&nbsp;&nbsp;{{ detail_news.date }}</h5>
+				<h5 id = "date"><span class="label label-warning">Новости сайта</span>&nbsp;&nbsp;{{ detail_news.dateCreated}}</h5>
 				<hr>
 				<div id="post">{% autoescape off %}
-				{{ detail_news.text_news|linebreaks  }}
+				{{ detail_news.description|linebreaks  }}
 				{% endautoescape %}
 				</div>
 				<hr>

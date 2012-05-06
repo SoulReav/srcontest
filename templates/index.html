@@ -7,14 +7,14 @@
 				<div id="first-post">
 		
 				<h4 id=bgtitle>{{ public_news.0.title }}</h4>
-				<h5 id = "date"><span class="label label-warning">Новости сайта</span>&nbsp;&nbsp;{{ public_news.0.date }}</h5>
+				<h5 id = "date"><span class="label label-warning">{{ public_news.0.categories.name }}</span>&nbsp;&nbsp;{{ public_news.0.dateCreated|date:"DATE_FORMAT" }}</h5>
 				<hr>
 				<div id="post">{% autoescape off %}
-				{{ public_news.0.text_news|linebreaks  }}
+				{{ public_news.0.description|linebreaks  }}
                 {% endautoescape %}
 				</div>
 				<hr>
-				<div id="more" class="pull-right"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Читать дальше...<h6></a></div>
+				<div id="more" class="pull-right"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Читать дальше...</h6></a></div>
 				
 				</div>
 			
@@ -29,16 +29,16 @@
 
 				<h4 id=bgtitle>{{ news.title }}</h4>
 				
-				<h5 id = "date"><span class="label label-warning">Новости сайта</span>&nbsp;&nbsp;{{ news.date }}</h5>
+				<h5 id = "date"><span class="label label-warning">{{ news.categories.name }}</span>&nbsp;&nbsp;{{ news.dateCreated|date:"DATE_FORMAT" }}</h5>
 				<hr>
 				<div id="post">
                 {% autoescape off %}
-				{{ news.text_news|linebreaks  }}
+				{{ news.description|linebreaks  }}
                 {% endautoescape %}
                 
 				</div>
 				<hr>
-				<div id="more" class="pull-right"><a href="{{ news.get_absolute_url}}"><h6 id="links">Читать дальше...<h6></a></div>
+				<div id="more" class="pull-right"><a href="{{ news.get_absolute_url}}"><h6 id="links">Читать дальше...</h6></a></div>
 				
 				</div>
 				

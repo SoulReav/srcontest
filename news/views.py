@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 # Create your views here.
 from django.http import HttpRequest, HttpResponse
 from django_xmlrpc.decorators import xmlrpc_func
 from grelka import settings
-from grelka.news.models import News
+from grelka.news.models import News, Categories
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from datetime import datetime
@@ -41,13 +43,14 @@ def new_post(blog_id, username, password, post, publish):
     user = authenticate(username, password)
     item = News()
     item.title = post['title']
-    item.text_news = post['description']
+    item.description = post['description']
     if post.get('dateCreated'):
-        item.date  = datetime.strptime(str(post['dateCreated'])[:8],'%Y%m%d')
+        item.dateCreated  = datetime.strptime(str(post['dateCreated']),'%Y%m%dT%H:%M:%S')
     else:
-        item.date = datetime.now().date()
+        item.dateCreated = datetime.now().date()
     item.author = user
-    item.public = publish
+    item.publish = publish
+    item.categories = Categories.objects.get(name=u'Новости сайта')
     item.save()
     return item.pk
 
@@ -56,13 +59,14 @@ def edit_post(post_id, username, password, post, publish):
     user = authenticate(username, password)
     item = News.objects.get(id=post_id, author=user)
     item.title = post['title']
-    item.text_news = post['description']
+    item.description = post['description']
     if post.get('dateCreated'):
-        item.date  = datetime.strptime(str(post['dateCreated'])[:8],'%Y%m%d')
+        item.dateCreated  = datetime.strptime(str(post['dateCreated']),'%Y%m%dT%H:%M:%S')
     else:
-        item.date = datetime.now().date()
+        item.dateCreated = datetime.now().date()
     item.author = user
     item.public = publish
+    item.categories = Categories.objects.get(name=u'Новости сайта')
     item.save()
     return True
 

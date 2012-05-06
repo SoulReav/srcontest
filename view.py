@@ -18,8 +18,8 @@ def main(request):
     public_news= []
     while i < 5:
         try:
-            if News.objects.order_by('date')[j].public == True:
-                public_news.append(News.objects.order_by('date')[j])
+            if News.objects.order_by('dateCreated')[j].publish == True:
+                public_news.append(News.objects.order_by('dateCreated')[j])
                 j+=1
                 i+=1
             else:
@@ -27,9 +27,7 @@ def main(request):
         except:
             i = 5
     public_news.reverse()
-    for p in public_news:
-        print p.pk
-                
+
     return render_to_response('index.html', {'public_news':public_news}, RequestContext(request))
 
 def logout(request):

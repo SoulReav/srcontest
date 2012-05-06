@@ -134,7 +134,7 @@ color: #595959;
 {
 	margin-top: 10px;
 	color: #6a6a6a;
-	
+	position:relative;
 }
 
 #post p
@@ -268,4 +268,31 @@ float: left;
 #content-bar
 {
 	background-color: #F5F5F5;
+}
+
+#slider
+{
+position:relative;
+overflow: hidden; 
+height:250px;
+width:960px;
+}
+
+#slider-panel
+{
+	position:absolute;
+	top:220px;
+	left:160px;
+	display:block;
+}
+
+.slider-button
+{
+	cursor:pointer;	
+}
+
+.items
+{
+	position:absolute;
+	left:960px;
 }
