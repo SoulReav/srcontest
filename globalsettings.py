@@ -128,8 +128,8 @@ XMLRPC_METHODS = (('srcontest.news.views.get_users_blogs', 'blogger.getUsersBlog
                   ('srcontest.news.views.edit_post', 'metaWeblog.editPost'),
                   ('srcontest.news.views.delete_post', 'blogger.deletePost'),)
 
-TINYMCE_JS_URL = MEDIA_URL + "tiny_mce/tiny_mce.js"
-TINYMCE_JS_ROOT = MEDIA_URL + "/tiny_mce"
+TINYMCE_JS_URL = STATIC_URL + "tiny_mce/tiny_mce.js"
+TINYMCE_JS_ROOT = STATIC_URL + "/tiny_mce"
 TINYMCE_SPELLCHECKER=False
 TINYMCE_PLUGINS = [
     'safari',
