@@ -27,9 +27,9 @@ def authenticate(username, password):
 def get_users_blogs(appKey, username, password):
     user = authenticate(username, password)
     return [{'isAdmin': user.is_superuser,
-            'url': 'http://127.0.0.1:8000/',
+            'url': 'http://srcontest.us.to/',
             'blogid': '1',
-            'blogName': 'MyWebBlog'}]
+            'blogName': 'srcontest blog'}]
 
 
 @xmlrpc_func(returns='struct', args=['string', 'string', 'string'])
