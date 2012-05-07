@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from view import main, login, logout, NewsDetailView
+from view import main, login, logout, descriptionView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     (r'^$', main),
     (r'^accounts/login/(?P<error>([a-z]{1,5})?)(/)?$', login),
     (r'^accounts/logout/', logout),
-    (r'^news/(?P<year>(\d){4})(/)(?P<month>(\d){2})(/)(?P<day>(\d){2})(/)(?P<idd>(\d)+)(/)?$', NewsDetailView),
+    (r'^news/(?P<year>(\d){4})(/)(?P<month>(\d){2})(/)(?P<day>(\d){2})(/)(?P<id>(\d)+)(/)?$', descriptionView),
     (r"^comments/", include("django.contrib.comments.urls")),
     # Example:
     # (r'^grelka/', include('grelka.foo.urls')),

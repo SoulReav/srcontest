@@ -8,9 +8,9 @@ from django.core.urlresolvers import reverse
 from news.models import News
 from django.core.context_processors import csrf
 
-def NewsDetailView(request, year, month, day, idd):
-    DetailNews = News.objects.get(id=idd) 
-    return render_to_response('NewsDetail.html', {'detail_news':DetailNews}, RequestContext(request))
+def descriptionView(request, year, month, day, id):
+    DetailNews = News.objects.get(id=id)
+    return render_to_response('description.html', {'detail_news':DetailNews}, RequestContext(request))
 
 def main(request):
     public_news= News.objects.order_by('-dateCreated').filter(publish=True)[0:5]
