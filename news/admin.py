@@ -1,5 +1,5 @@
 from django.contrib import admin
-from grelka.news.models import News, Categories
+from srcontest.news.models import News, Categories
 
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'dateCreated','publish' ,'author')

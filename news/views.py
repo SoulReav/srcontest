@@ -3,8 +3,8 @@
 # Create your views here.
 from django.http import HttpRequest, HttpResponse
 from django_xmlrpc.decorators import xmlrpc_func
-from grelka import settings
-from grelka.news.models import News, Categories
+from srcontest import settings
+from srcontest.news.models import News, Categories
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from datetime import datetime

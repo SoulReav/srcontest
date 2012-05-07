@@ -10,7 +10,7 @@ class CustomIndexDashboard(Dashboard):
             modules.ModelList( title = u'Пользователи', models=('django.contrib.auth.*',)),
         )
         self.children.append(
-             modules.ModelList( title = u'Новости', models=('grelka.news.*',))             
+             modules.ModelList( title = u'Новости', models=('srcontest.news.*',))             
         )
 
 

@@ -23,7 +23,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 
-ADMIN_TOOLS_INDEX_DASHBOARD = 'grelka.dashboard.CustomIndexDashboard'
+ADMIN_TOOLS_INDEX_DASHBOARD = 'srcontest.dashboard.CustomIndexDashboard'
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -89,7 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     )
 
-ROOT_URLCONF = 'grelka.urls'
+ROOT_URLCONF = 'srcontest.urls'
 
 
 TEMPLATE_DIRS = (
@@ -116,17 +116,17 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'grelka.news',
+    'srcontest.news',
     'django_xmlrpc',
     'tinymce',
     
 )
 
-XMLRPC_METHODS = (('grelka.news.views.get_users_blogs', 'blogger.getUsersBlogs'),
-                  ('grelka.news.views.get_user_info', 'blogger.getUserInfo'),
-                  ('grelka.news.views.new_post', 'metaWeblog.newPost'),
-                  ('grelka.news.views.edit_post', 'metaWeblog.editPost'),
-                  ('grelka.news.views.delete_post', 'blogger.deletePost'),)
+XMLRPC_METHODS = (('srcontest.news.views.get_users_blogs', 'blogger.getUsersBlogs'),
+                  ('srcontest.news.views.get_user_info', 'blogger.getUserInfo'),
+                  ('srcontest.news.views.new_post', 'metaWeblog.newPost'),
+                  ('srcontest.news.views.edit_post', 'metaWeblog.editPost'),
+                  ('srcontest.news.views.delete_post', 'blogger.deletePost'),)
 
 TINYMCE_JS_URL = MEDIA_URL + "tiny_mce/tiny_mce.js"
 TINYMCE_JS_ROOT = MEDIA_URL + "/tiny_mce"
