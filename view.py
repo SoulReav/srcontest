@@ -9,11 +9,13 @@ from news.models import News
 from django.core.context_processors import csrf
 
 def descriptionView(request, year, month, day, id):
-    DetailNews = News.objects.get(id=id)
-    return render_to_response('description.html', {'detail_news':DetailNews}, RequestContext(request))
+    descriptionNews = News.objects.get(id=id)
+    return render_to_response('description.html', {'detail_news':descriptionNews}, RequestContext(request))
 
 def main(request):
     public_news= News.objects.order_by('-dateCreated').filter(publish=True)[0:5]
+    for p in public_news:
+        p.description = p.description[0:p.description.find('<!--more-->')]
     return render_to_response('index.html', {'public_news':public_news}, RequestContext(request))
 
 def logout(request):
