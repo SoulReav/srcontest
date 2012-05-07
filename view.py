@@ -13,8 +13,7 @@ def NewsDetailView(request, year, month, day, idd):
     return render_to_response('NewsDetail.html', {'detail_news':DetailNews}, RequestContext(request))
 
 def main(request):
-    public_news= News.objects.order_by('dateCreated').filter(publish=True)[0:5]
-    public_news.reverse()
+    public_news= News.objects.order_by('-dateCreated').filter(publish=True)[0:5]
     return render_to_response('index.html', {'public_news':public_news}, RequestContext(request))
 
 def logout(request):
