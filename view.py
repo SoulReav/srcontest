@@ -15,7 +15,9 @@ def descriptionView(request, year, month, day, id):
 def main(request):
     public_news= News.objects.order_by('-dateCreated').filter(publish=True)[0:5]
     for p in public_news:
-        p.description = p.description[0:p.description.find('<!--more-->')]
+        cut = p.description.find('<!--more-->')
+        if cut != -1:
+            p.description = p.description[0:cut]
     return render_to_response('index.html', {'public_news':public_news}, RequestContext(request))
 
 def logout(request):
