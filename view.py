@@ -16,7 +16,7 @@ def main(request):
     i = 0
     j = 0
     public_news= []
-    while i < 5:
+    while i < 6:
         try:
             if News.objects.order_by('dateCreated')[j].publish == True:
                 public_news.append(News.objects.order_by('dateCreated')[j])
