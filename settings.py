@@ -1,5 +1,5 @@
 # Django settings for grelka project.
-# Test
+
 import os.path
 
 _PATH = os.path.abspath(os.path.dirname(__file__))
