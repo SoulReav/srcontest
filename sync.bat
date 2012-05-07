@@ -1,1 +1,1 @@
-c:\python27\python.exe manage.py syncdb
+python manage.py syncdb
