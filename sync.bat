@@ -1,1 +1,1 @@
-python manage.py syncdb11
+python manage.py syncdb
