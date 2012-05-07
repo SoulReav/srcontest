@@ -13,21 +13,8 @@ def NewsDetailView(request, year, month, day, idd):
     return render_to_response('NewsDetail.html', {'detail_news':DetailNews}, RequestContext(request))
 
 def main(request):
-    i = 0
-    j = 0
-    public_news= []
-    while i < 5:
-        try:
-            if News.objects.order_by('dateCreated')[j].publish == True:
-                public_news.append(News.objects.order_by('dateCreated')[j])
-                j+=1
-                i+=1
-            else:
-                j+=1
-        except:
-            i = 5
+    public_news= News.objects.order_by('dateCreated').filter(publish=True)[0:5]
     public_news.reverse()
-
     return render_to_response('index.html', {'public_news':public_news}, RequestContext(request))
 
 def logout(request):
