@@ -296,3 +296,8 @@ width:960px;
 	position:absolute;
 	left:960px;
 }
+
+#footer-text
+{
+    padding-top: 30px;
+}
