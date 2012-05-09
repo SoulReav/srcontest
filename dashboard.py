@@ -6,12 +6,17 @@ class CustomIndexDashboard(Dashboard):
 
     def __init__(self, **kwargs):
         Dashboard.__init__(self, **kwargs)
+
         self.children.append(
             modules.ModelList( title = u'Пользователи', models=('django.contrib.auth.*',)),
         )
-        self.children.append(
-             modules.ModelList( title = u'Новости', models=('srcontest.news.models.news','srcontest.news.models.categories'))
-        )
+
+        try:
+            self.children.append(
+                modules.ModelList( title = u'Новости', models=('srcontest.news.models.news','srcontest.news.models.categories'))
+            )
+        except:
+            print 'Ня!'
 
 
 
