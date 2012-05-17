@@ -28,17 +28,16 @@ def login(request, error):
     
     if request.user.is_authenticated():
         return HttpResponse(u'Спасибо что зашли %s ' % request.user.username)
-    
+
     if request.method == 'POST':
-        if request.method == 'POST':
-            username = request.POST['login'].lower()
-            password = request.POST['password'].lower()
-            user = auth.authenticate(username = username, password=password)
-            if user is not None and user.is_active:
-                auth.login(request, user)
-                return HttpResponseRedirect('/')
-            else:
-                return HttpResponseRedirect(reverse(login, kwargs={'error':'error/'}))
+        username = request.POST['login'].lower()
+        password = request.POST['password'].lower()
+        user = auth.authenticate(username = username, password=password)
+        if user is not None and user.is_active:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponseRedirect(reverse(login, kwargs={'error':'error/'}))
            
     return render_to_response('login.html', {'error':error}, RequestContext(request))
 
