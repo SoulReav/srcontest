@@ -16,7 +16,6 @@ urlpatterns = patterns('',
     (r'^accounts/login/(?P<error>([a-z]{1,5})?)(/)?$', login),
     (r'^accounts/logout/', logout),
     (r'^news/(?P<year>(\d){4})(/)(?P<month>(\d){2})(/)(?P<day>(\d){2})(/)(?P<id>(\d)+)(/)?$', descriptionView),
-    (r"^comments/", include("django.contrib.comments.urls")),
     # Example:
     # (r'^grelka/', include('grelka.foo.urls')),
 
@@ -26,6 +25,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     (r'^tinymce/',include('tinymce.urls')),
+    (r'^srcomments/',include('srcomments.urls')),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

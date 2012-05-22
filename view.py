@@ -7,6 +7,7 @@ from django.template import loader, RequestContext
 from django.core.urlresolvers import reverse
 from news.models import News
 from django.core.context_processors import csrf
+from srcomments.models import SRComments
 
 def descriptionView(request, year, month, day, id):
     descriptionNews = News.objects.get(id=id)

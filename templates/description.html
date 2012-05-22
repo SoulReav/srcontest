@@ -1,5 +1,7 @@
 ﻿{% extends "base.html" %}
 
+{% load srcomments_tags %}
+
 {% block detail-view %}
 
 				<div id="first-post">
@@ -12,50 +14,13 @@
 				{% endautoescape %}
 				</div>
 				<hr>
-				<div id="more" class="pull-right" id="comment-count"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Всего комментариев (3)<h6></a></div>
+				<div id="more" class="pull-right" id="comment-count"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Всего комментариев (3)</h6></a></div>
 				</div>
 				
 				<br>
-				
-				<div id="comment-block">
-				<div id="comment">
-			
-				<div>
-				<blockquote>
-				<img src="{{ MEDIA_URL }}img/icon.jpg"></img>
-				
-				<p><h6>Soul Reaver | 24.02.2012 |</h6></p>
-				<p>По остальным ничего не скажу. Samsung в этом ценовом диапазоне это Galaxy S Plus, что-то дешевле не смотрел бы. HTC так вообще смотреть не стал бы. Что Desire S, что Incredible S технически уступают конкурентам, а стоят как правило даже дороже. Если и брать то только за материалы корпуса, и Sense, но тут уже кому что... Для меня метал в корпусе - не принцип, а Sense - перегруженная штука, не говоря о том что он же является главной причиной, по которой Android 4.0 на этих аппаратах на вряд ли появится. Зато цена вполне себе. </p>
-				</blockquote>
-				</div>
-				
-				</div>
-				
-				<div id="comment">
-			
-				<div>
-				<blockquote>
-				<img src="{{ MEDIA_URL }}img/icon.jpg"></img>
-				
-				<p><h6>Soul Reaver | 24.02.2012 |</h6></p>
-				<p>По остальным ничего не скажу. </p>
-				</blockquote>
-				</div>
-				
-				</div>
-				
-				<div id="comment">
-			
-				<div>
-				<blockquote>
-				<img src="{{ MEDIA_URL }}img/icon.jpg"></img>
-				
-				<p><h6>Soul Reaver | 24.02.2012 |</h6></p>
-				<p>По остальным ничего не скажу. Samsung в этом ценовом диапазоне это Galaxy S Plus, что-то дешевле не смотрел бы. HTC так вообще смотреть не стал бы. Что Desire S, что Incredible S технически уступают конкурентам, а стоят как правило даже дороже. Если и брать то только за материалы корпуса, и Sense, но тут уже кому что... Для меня метал в корпусе - не принцип, а Sense - перегруженная штука, не говоря о том что он же является главной причиной, по которой Android 4.0 на этих аппаратах на вряд ли появится. Зато цена вполне себе. </p>
-				</blockquote>
-				</div>
-				
-				</div>
-			
-				</div>
+
+
+                {% show_srcomments %}
+
+
 {% endblock %}

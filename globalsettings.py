@@ -97,6 +97,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(_PATH, 'templates').replace('\\','/'),
+    'django.template.loaders.app_directories.load_template_source',
 )
 
 INSTALLED_APPS = (
@@ -116,7 +117,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'srcontest.news',
+    'news',
+    'srcomments',
     'django_xmlrpc',
     'tinymce',
     
