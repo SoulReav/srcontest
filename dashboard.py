@@ -13,7 +13,7 @@ class CustomIndexDashboard(Dashboard):
 
         try:
             self.children.append(
-                modules.ModelList( title = u'Новости', models=('srcontest.news.models.news','srcontest.news.models.categories'))
+                modules.ModelList( title = u'Новости', models=('news.models.news','news.models.categories'))
             )
         except:
             print 'Ня!'
