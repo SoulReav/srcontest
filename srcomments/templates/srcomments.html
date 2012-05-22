@@ -1,0 +1,42 @@
+
+ {% for comment in comments %}
+
+
+    <div id="comment">
+
+    <div>
+        <blockquote>
+            <img src="{{ MEDIA_URL }}img/icon.jpg"></img>
+
+            <p><h6> {{ comment.user.username }} | {{ comment.dateCreated }} |</h6></p>
+            <p>{{ comment.comment }}</p>
+        </blockquote>
+    </div>
+    <hr>
+</div>
+
+{% endfor %}
+
+ {% if user.is_authenticated %}
+
+<div id="submit_form">
+
+    <form method="POST" action="/srcomments/post/">
+    {% csrf_token %}
+    <h5>Оставить комментарий: </h5>
+
+    <textarea class="input-xxlarge"  id="commentarea" rows="6" data-default-value="" name="comment-text"></textarea>
+    <input type="hidden" name="url_page" value="{{ url }}">
+
+    <button type="submit" class="btn btn-warning">Отправить комментарий</button>
+
+    </form>
+</div>
+
+{% else %}
+
+<div id="not_auth">
+    <p>Вы не авторизованы! Вы не можете комментировать эту запись. Войдите под своим именем, или пройдите процедуру регистрации.</p>
+</div>
+
+{% endif %}
