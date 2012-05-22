@@ -5,7 +5,9 @@
 {% block detail-view %}
 
 				<div id="first-post">
-		
+
+
+
 				<h4 id=bgtitle>{{ detail_news.title }}</h4>
 				<h5 id = "date"><span class="label label-warning">Новости сайта</span>&nbsp;&nbsp;{{ detail_news.dateCreated}}</h5>
 				<hr>
@@ -15,7 +17,8 @@
 				</div>
 				<hr>
 				<div id="more" class="pull-right" id="comment-count"><a href="{{ public_news.0.get_absolute_url}}"><h6 id="links">Всего комментариев (3)</h6></a></div>
-				</div>
+                <div id="share" class="yashare-auto-init" data-yashareL10n="ru" data-yashareLink="http://{{ request.META.HTTP_HOST }}{{ public_news.0.get_absolute_url }}"  data-yashareTitle="Новость на сайте: {{ public_news.0.title }}" data-yashareType="link" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj"></div>
+                </div>
 				
 				<br>
 

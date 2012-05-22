@@ -98,7 +98,7 @@ color: #868686;
 	margin-top: 20px;
 	background-color: #FFFFFF;
 	padding:20px;
-	padding-bottom:35px;
+	padding-bottom:5px;
 }
 
 #first-post hr
@@ -114,7 +114,7 @@ color: #868686;
 	margin-top: 25px;
 	background-color: #FFFFFF;
 	padding:20px;
-	padding-bottom:35px;
+	padding-bottom:5px;
 }
 
 #text-post hr
@@ -329,3 +329,9 @@ width:960px;
     padding-top: 5px;
 }
 
+#share
+{
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
