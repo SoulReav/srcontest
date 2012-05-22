@@ -9,7 +9,8 @@
 
 
 				<h4 id=bgtitle>{{ detail_news.title }}</h4>
-				<h5 id = "date"><span class="label label-warning">Новости сайта</span>&nbsp;&nbsp;{{ detail_news.dateCreated}}</h5>
+                <div id="auhtor" class="pull-right"><h5> Опубликовал:&nbsp;&nbsp; <a>{{ detail_news.author.username }}</a></h5></div>
+				<h5 id = "date"><span class="label label-warning">{{ detail_news.categories.name }}</span>&nbsp;&nbsp;{{ detail_news.dateCreated}}</h5>
 				<hr>
 				<div id="post">{% autoescape off %}
 				{{ detail_news.description|linebreaks  }}

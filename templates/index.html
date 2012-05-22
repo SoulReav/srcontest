@@ -7,6 +7,7 @@
 				<div id="first-post">
 		
 				<h4 id=bgtitle>{{ public_news.0.title }}</h4>
+                <div id="auhtor" class="pull-right"><h5> Опубликовал:&nbsp;&nbsp; <a>{{ public_news.0.author.username }}</a></h5></div>
 				<h5 id = "date"><span class="label label-warning">{{ public_news.0.categories.name }}</span>&nbsp;&nbsp;{{ public_news.0.dateCreated|date:"DATE_FORMAT" }}</h5>
 				<hr>
 				<div id="post">{% autoescape off %}
@@ -29,7 +30,7 @@
 				<div id="text-post">
 
 				<h4 id=bgtitle>{{ news.title }}</h4>
-				
+                <div id="auhtor" class="pull-right"><h5> Опубликовал:&nbsp;&nbsp; <a>{{ news.author.username }}</a></h5></div>
 				<h5 id = "date"><span class="label label-warning">{{ news.categories.name }}</span>&nbsp;&nbsp;{{ news.dateCreated|date:"DATE_FORMAT" }}</h5>
 				<hr>
 				<div id="post">
