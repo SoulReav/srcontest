@@ -11,12 +11,10 @@ class CustomIndexDashboard(Dashboard):
             modules.ModelList( title = u'Пользователи', models=('django.contrib.auth.*',)),
         )
 
-        try:
-            self.children.append(
-                modules.ModelList( title = u'Новости', models=('news.models.news','news.models.categories'))
-            )
-        except:
-            print 'Ня!'
+        self.children.append(
+            modules.ModelList( title = u'Новости', models=('news.models.News',)),
+        )
+
 
 
 
