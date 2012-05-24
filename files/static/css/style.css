@@ -12,6 +12,7 @@
 #links
 {
 color: #ffb750;
+font-family: "Century Gothic", "HelveticaNeue";
 
 }
 
@@ -33,6 +34,7 @@ color: #ffb750;
 {
 	margin-top: 7px;
 	margin-bottom: 12px;
+	font-family: "Century Gothic", "HelveticaNeue";
 }
 
 #middle-bar
@@ -44,6 +46,7 @@ color: #ffb750;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.04706);
+	
 }
 
 #logo
@@ -105,7 +108,7 @@ color: #868686;
 
 #first-post
 {
-	margin-top: 20px;
+	margin-top: 0px;
 	background-color: #FFFFFF;
 	padding:20px;
 	padding-bottom:5px;
@@ -305,6 +308,7 @@ float: left;
 {
 	background-color: #F5F5F5;
     padding-bottom: 100px;
+	margin-top: 0px;
 }
 
 #slider
@@ -313,6 +317,7 @@ position:relative;
 overflow: hidden; 
 height:250px;
 width:960px;
+
 }
 
 #slider-panel
@@ -344,4 +349,12 @@ width:960px;
     margin-top: 5px;
     margin-bottom: 0px;
     padding-bottom: 0px;
+}
+
+#shadows
+{
+background : url(../img/top-bgd-shadow.png ) repeat-x;
+display:block;
+height: 39px;
+width: 100%;
 }

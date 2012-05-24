@@ -1,3 +1,5 @@
+{% load polls_tags %}
+
 <!DOCTYPE html>
 
 <html>
@@ -68,7 +70,7 @@ $(document).ready(function(e) {
 </div>
 
 <div id= "middle-bar">
-
+ 
 	<div class = "container" >
 
 		<div class="row">
@@ -140,7 +142,9 @@ $(document).ready(function(e) {
 </div>
 
 
+
 <div id= "content-bar">
+<div id="shadows"></div> 
 
 	<div class = "container" >
 
@@ -155,6 +159,12 @@ $(document).ready(function(e) {
 				{% block text-post %}{% endblock %}
 
 	        </div>
+
+            <div class = "span3" id="logo-bar" name="logo-bar">
+
+                {% poll_queue 'Public' %}
+
+            </div>
 
         </div>
     </div>

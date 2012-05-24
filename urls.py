@@ -12,6 +12,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^xmlrpc/$', 'django_xmlrpc.views.handle_xmlrpc', name='xmlrpc'),
+    url(r'^poll/', include('poll.urls')),
     url(r'^$', main, name ='index'),
     (r'^accounts/login/(?P<error>([a-z]{1,5})?)(/)?$', login),
     (r'^accounts/logout/', logout),

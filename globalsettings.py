@@ -121,8 +121,9 @@ INSTALLED_APPS = (
     'srcomments',
     'django_xmlrpc',
     'tinymce',
-    
-)
+    'poll',
+
+    )
 
 XMLRPC_METHODS = (('srcontest.news.views.get_users_blogs', 'blogger.getUsersBlogs'),
                   ('srcontest.news.views.get_user_info', 'blogger.getUserInfo'),
