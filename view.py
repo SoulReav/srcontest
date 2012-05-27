@@ -3,9 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
+from django.template import loader, RequestContext
 from django.core.urlresolvers import reverse
 from news.models import News
+from django.core.context_processors import csrf
+from srcomments.models import SRComments
 
 def descriptionView(request, year, month, day, id):
     descriptionNews = News.objects.get(id=id)
