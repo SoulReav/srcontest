@@ -112,6 +112,13 @@ color: #868686;
 	background-color: #FFFFFF;
 	padding:20px;
 	padding-bottom:5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.08);
+    border-left: 1px;
+    border-left-style: solid;
+    border-left-color: #e6e6e6;
+    border-top: 1px;
+    border-top-style: solid;
+    border-top-color: #e6e6e6;
 }
 
 #first-post hr
@@ -128,6 +135,13 @@ color: #868686;
 	background-color: #FFFFFF;
 	padding:20px;
 	padding-bottom:5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.08);
+    border-left: 1px;
+    border-left-style: solid;
+    border-left-color: #e6e6e6;
+    border-top: 1px;
+    border-top-style: solid;
+    border-top-color: #e6e6e6;
 }
 
 #text-post hr
@@ -357,4 +371,19 @@ background : url(../img/top-bgd-shadow.png ) repeat-x;
 display:block;
 height: 39px;
 width: 100%;
+}
+
+#poll
+{
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.08);
+    border-left: 1px;
+    border-left-color: #e6e6e6;
+    border-top: 1px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-top-color: #e6e6e6;
+    margin-left: 19px;
+    padding-left: 10px;
+    width: 210px;
 }
