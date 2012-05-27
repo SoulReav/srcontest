@@ -387,3 +387,8 @@ width: 100%;
     padding-left: 10px;
     width: 210px;
 }
+
+#poll hr
+{
+    width: 90%;
+}
