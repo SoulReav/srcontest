@@ -1,1 +1,59 @@
 {% extends "base.html" %}
+{% load srcomments_tags %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/contest.css">
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block middle-bar %}
+    <div class = "span8">
+        <div class="white-block">
+            <p id="Title">Конкурс №11: Silent hill</p>
+            <a href="/"><img id="large-logo" src="{{ STATIC_URL }}img/image1.jpg"/></a>
+            <p class="basic-text"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.</p>
+            <p class="basic-text">Сколько раз мы возвращались в Silent hill? Два, пять, семь? Можете не волноваться, как минимум ещё разок точно заглянем. Или вам больше не хочется? Неужели надоело? Утверждаете, что серия изжила себя, и не способна предложить что-то новое? Возможно, но давайте воздержимся от преждевременных выводов, а лучше взглянем на то, что Konami предлагают нам в Silent Hill: Downpour.</p>
+            <hr>
+            <p class="basic-text"><b>Обязательные условия:</b></p>
+                <ul>
+                    <li>Наличие фиг знает чего</li>
+                    <li>Ещё фиг знает что в наличии</li>
+                    <li>Ну и что нибудь до кучи</li>
+                </ul>
+            <hr>
+            <p class="basic-text"><b>Приветствуется:</b></p>
+            <ul>
+                <li>Наличие фиг знает чего</li>
+                <li>Ещё фиг знает что в наличии</li>
+                <li>Ну и что нибудь до кучи</li>
+            </ul>
+
+            <hr>
+
+            <p class="basic-text"> И чем бы в итоге не оказалась Silent Hill: Downpour – блистательным возвращением, или очередным провалом – дать шанс всё равно хочется. Ведь если не ей, то кому? Однажды Silent hill уже стал откровением в жанре, и кто знает – быть может истории суждено повториться?</p>
+            <hr>
+            <div id="share" class="yashare-auto-init" data-yashareL10n="ru" data-yashareLink="http://{{ request.META.HTTP_HOST }}{{ public_news.0.get_absolute_url }}"  data-yashareTitle="Новость на сайте: {{ public_news.0.title }}" data-yashareType="link" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj"></div>
+        </div>
+
+    {% show_srcomments %}
+
+    </div>
+
+
+    <div class = "span4">
+        <div class="white-block">
+            <p class="basic-text"><b>Жанр:</b> Ужасы</p>
+            <p class="basic-text"><b>Дата начала конкурса:</b> 06.03.2012</p>
+            <p class="basic-text"><b>Дата завершения конкурса:</b> 06.04.2012</p>
+            <hr>
+            <p class="basic-text"><b>Текущие участники: </b>Admin, Fosfor, Ildar</p>
+            <hr>
+            <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Участвовать!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+        </div>
+    </div>
+
+{% endblock %}

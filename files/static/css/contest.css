@@ -1,0 +1,96 @@
+#auhtor
+{
+    margin-top: 10px;
+}
+
+#auhtor h5,h4
+{
+    color: #8B8B8B;
+}
+
+#links
+{
+    color: #ffb750;
+    font-family: "Century Gothic", "HelveticaNeue";
+
+}
+
+#Top
+{
+    margin-top: 5px;
+    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+#AuthForm
+{
+    margin-top: 2px;
+    margin-bottom: -2px;
+}
+
+#TopInfoBar
+{
+    margin-top: 7px;
+    margin-bottom: 12px;
+    font-family: "Century Gothic", "HelveticaNeue";
+}
+
+#middle-bar
+{
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+    background-color: #F5F5F5;
+
+}
+
+
+#Title
+{
+    font-family: "Century Gothic";
+    margin-left: 10px;
+    margin-bottom: 15px;
+    color: #868686;
+    text-transform: uppercase;
+    font-size: 20pt;
+    line-height: 36px;
+}
+
+.basic-text
+{
+    color: #6A6A6A;
+    font-size: 13px;
+}
+
+.white-block
+{   margin-top: 15px;
+    background-color: #ffffff;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.btn btn-warning
+{
+    width: 100%;
+}
+
+#logo
+{
+    margin-bottom: 10px;
+}
+
+#large-logo
+{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+
+#share
+{
+    padding-top: 0px;
+    margin-top: -10px;
+}
