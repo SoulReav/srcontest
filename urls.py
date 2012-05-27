@@ -3,6 +3,7 @@ from view import main, login, logout, descriptionView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from contest.views import contestPage
 
 
 # Uncomment the next two lines to enable the admin:
@@ -17,6 +18,7 @@ urlpatterns = patterns('',
     (r'^accounts/login/(?P<error>([a-z]{1,5})?)(/)?$', login),
     (r'^accounts/logout/', logout),
     (r'^news/(?P<year>(\d){4})(/)(?P<month>(\d){2})(/)(?P<day>(\d){2})(/)(?P<id>(\d)+)(/)?$', descriptionView),
+    (r'^contest/$', contestPage),
     # Example:
     # (r'^grelka/', include('grelka.foo.urls')),
 

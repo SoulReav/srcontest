@@ -1,8 +1,119 @@
 ﻿{% extends "base.html" %}
+{% load polls_tags %}
 
 {% load srcomments_tags %}
 
-{% block detail-view %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css">
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+
+    <script>
+        $(document).ready(function(e) {
+
+
+            $('.items').hide().first().show().css('left',0);
+            $('#slider-panel').first().find('img:first').attr('src','/static/img/panelb_s.png');
+            var currentHeadline = 0;
+            var oldHeadline = 0;
+            $('.slider-button').click(function(){
+                currentHeadline = $('.slider-button').index(this);
+                if (currentHeadline !== oldHeadline){
+                    $('#slider-panel').hide('midle');
+                    $('.items').eq(currentHeadline).animate({left:0},'slow');
+                    $('.items').eq(oldHeadline).animate({left:-960},'slow',function(){
+                        $(this).css('left',960).hide();
+                        $('.items').eq(oldHeadline).fadeIn('midle');
+                        $('#slider-panel').first().find('img').attr('src','/static/img/panelb.png');
+                        $('#slider-panel').find("img:eq("+currentHeadline+")").attr('src','/static/img/panelb_s.png');
+                        $('#slider-panel').show('midle');
+                    });
+
+                    oldHeadline = currentHeadline;
+
+                }
+            });
+
+
+        });
+    </script>
+{% endblock %}
+
+{% block middle-bar %}
+
+    <div id="slider">
+        <div class="items">
+
+            <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
+                <a href="/"><img id="logo" src="{{ STATIC_URL }}img/image.jpg"/></a>
+            </div>
+
+            <div id= "m-top" class = "span7">
+                <H2 id="TitleContest" >Текущий конкурс: Silent Hill</H2>
+                <p id="DescriptionContest"><b>Жанр:</b> survival horror <p>
+                <p id="DescriptionContest"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.<p>
+                <p id="DescriptionContest"><b>Дата завершения:</b> 6 марта 2012 года <p>
+                <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
+            </div>
+
+        </div>
+
+        <div class="items">
+
+            <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
+                <a href="/"><img id="logo"src="{{ STATIC_URL }}img/image.jpg"></a>
+            </div>
+
+            <div id= "m-top" class = "span7">
+                <H2 id="TitleContest" >Текущий конкурс: Silent Hill 2</H2>
+                <p id="DescriptionContest"><b>Жанр:</b> survival horror <p>
+                <p id="DescriptionContest"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.<p>
+                <p id="DescriptionContest"><b>Дата завершения:</b> 6 марта 2012 года <p>
+                <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
+            </div>
+
+        </div>
+
+        <div class="items">
+
+            <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
+                <a href="/"><img id="logo"src="{{ STATIC_URL }}img/image.jpg"></a>
+            </div>
+
+            <div id= "m-top" class = "span7">
+                <H2 id="TitleContest" >Текущий конкурс: Silent Hill 3</H2>
+                <p id="DescriptionContest"><b>Жанр:</b> survival horror <p>
+                <p id="DescriptionContest"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.<p>
+                <p id="DescriptionContest"><b>Дата завершения:</b> 6 марта 2012 года <p>
+                <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
+            </div>
+
+        </div>
+
+        <div id="slider-panel">
+
+            <a class="slider-button"><img src="{{ STATIC_URL }}img/panelb.png"/></a>
+            <a class="slider-button"><img src="{{ STATIC_URL }}img/panelb.png"/></a>
+            <a class="slider-button"><img src="{{ STATIC_URL }}img/panelb.png"/></a>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block shadow %}
+    <div id="shadows"></div>
+{% endblock%}
+
+{% block content-bar %}
+
+    <div class = "span9" id="logo-bar" name="logo-bar">
 
 				<div id="first-post">
 
@@ -26,5 +137,12 @@
 
                 {% show_srcomments %}
 
+    </div>
+
+    <div class = "span3" id="logo-bar" name="logo-bar">
+
+        {% poll_queue 'Public' %}
+
+    </div>
 
 {% endblock %}
