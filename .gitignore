@@ -5,3 +5,4 @@
 *.bat
 /files/static/tiny_mce
 /files/static/tiny_mce
+/dashboard.py
