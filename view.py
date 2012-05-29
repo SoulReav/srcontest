@@ -6,8 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import loader, RequestContext
 from django.core.urlresolvers import reverse
 from news.models import News
-from django.core.context_processors import csrf
-from srcomments.models import SRComments
+from contest.models import Contest
 
 def descriptionView(request, year, month, day, id):
     descriptionNews = News.objects.get(id=id)
@@ -19,7 +18,16 @@ def main(request):
         cut = p.description.find('<!--more-->')
         if cut != -1:
             p.description = p.description[0:cut]
-    return render_to_response('index.html', {'public_news':public_news}, RequestContext(request))
+    contest = []
+    for i in range(0,3):
+        try:
+            item = Contest.objects.all()[i]
+            item.td = str(item.description.find('</p>')-1)
+            contest.append(item)
+        except:
+            contest.append(u'Отсутствует')
+
+    return render_to_response('index.html', {'public_news':public_news, 'contest':contest}, RequestContext(request))
 
 def logout(request):
     auth.logout(request)

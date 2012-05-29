@@ -42,8 +42,12 @@
 {% endblock %}
 
 {% block middle-bar %}
-
     <div id="slider">
+    {% for items in contest %}
+
+        {% if items != "Отсутствует" %}
+
+
         <div class="items">
 
             <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
@@ -51,46 +55,36 @@
             </div>
 
             <div id= "m-top" class = "span7">
-                <H2 id="TitleContest" >Текущий конкурс: Silent Hill</H2>
-                <p id="DescriptionContest"><b>Жанр:</b> survival horror <p>
-                <p id="DescriptionContest"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.<p>
-                <p id="DescriptionContest"><b>Дата завершения:</b> 6 марта 2012 года <p>
+                <H2 id="TitleContest" >Текущий конкурс: {{ items.title }}</H2>
+                <p id="DescriptionContest"><b>Жанр:</b> Ужасы <p>
+                <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ items.description|cut:"<p>"|cut:"</p>"|slice:items.td }}{% endautoescape %}<p>
+                <p id="DescriptionContest"><b>Дата завершения:</b> {{ items.startdate }} <p>
                 <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
             </div>
 
         </div>
 
-        <div class="items">
+        {% else %}
 
-            <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
-                <a href="/"><img id="logo"src="{{ STATIC_URL }}img/image.jpg"></a>
+            <div class="items">
+
+                <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
+                    <a href="/"><img id="logo" src="{{ STATIC_URL }}img/image.jpg"/></a>
+                </div>
+
+                <div id= "m-top" class = "span7">
+                    <H2 id="TitleContest" >Текущий конкурс: {{ contest.0.title }}</H2>
+                    <p id="DescriptionContest"><b>Жанр:</b> Ужасы <p>
+                    <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ contest.0.description|cut:"<p>"|cut:"</p>"|slice:"200" }}{% endautoescape %}<p>
+                    <p id="DescriptionContest"><b>Дата завершения:</b> {{ contest.0.startdate }} <p>
+                    <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
+                </div>
+
             </div>
 
-            <div id= "m-top" class = "span7">
-                <H2 id="TitleContest" >Текущий конкурс: Silent Hill 2</H2>
-                <p id="DescriptionContest"><b>Жанр:</b> survival horror <p>
-                <p id="DescriptionContest"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.<p>
-                <p id="DescriptionContest"><b>Дата завершения:</b> 6 марта 2012 года <p>
-                <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
-            </div>
+        {% endif %}
 
-        </div>
-
-        <div class="items">
-
-            <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
-                <a href="/"><img id="logo"src="{{ STATIC_URL }}img/image.jpg"></a>
-            </div>
-
-            <div id= "m-top" class = "span7">
-                <H2 id="TitleContest" >Текущий конкурс: Silent Hill 3</H2>
-                <p id="DescriptionContest"><b>Жанр:</b> survival horror <p>
-                <p id="DescriptionContest"><b>Описание:</b> Темный лес, густой туман. Не единой живой души вокруг, а лишь небольшой, тихий городок в дали, расположившийся среди холмов. Соломинка для заблудшего путника? Но почему же город пуст, а, казалось бы, сломанный приёмник словно взбесился от радиопомех? Картина до боли знакома большинству любителей жанра survival horror.<p>
-                <p id="DescriptionContest"><b>Дата завершения:</b> 6 марта 2012 года <p>
-                <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
-            </div>
-
-        </div>
+    {% endfor %}
 
         <div id="slider-panel">
 
