@@ -75,7 +75,7 @@
                 <div id= "m-top" class = "span7">
                     <H2 id="TitleContest" >Текущий конкурс: {{ contest.0.title }}</H2>
                     <p id="DescriptionContest"><b>Жанр:</b> Ужасы <p>
-                    <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ contest.0.description|cut:"<p>"|cut:"</p>"|slice:"200" }}{% endautoescape %}<p>
+                    <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ contest.0.description|cut:"<p>"|cut:"</p>"|slice:contest.0.td }}{% endautoescape %}<p>
                     <p id="DescriptionContest"><b>Дата завершения:</b> {{ contest.0.startdate }} <p>
                     <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
                 </div>
