@@ -18,8 +18,6 @@ class Contest(models.Model):
     title = models.CharField(max_length=140, verbose_name=u'Заголовок конкурса')
     description = tinymce_model.HTMLField(verbose_name=u'Описание')
     genre = models.CharField(max_length=140,verbose_name=u'Жанр')
-    #terms = models.ManyToManyField('Terms', verbose_name=u'Обязательные требования', related_name='contest')
-    #extra = models.ManyToManyField(Extra, verbose_name=u'Приветствуется', null=True, blank=True)
     startdate = models.DateField(verbose_name=u'Дата старта')
     enddate = models.DateField(verbose_name=u'Дата завершения')
     contestants = models.ManyToManyField(User)
@@ -28,6 +26,9 @@ class Contest(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return "/contest/%s" % (self.startdate.strftime('%Y/%m/%d/') + str(self.id)+'/')
 
 class Terms(models.Model):
     contest = models.ForeignKey(Contest)

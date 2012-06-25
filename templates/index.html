@@ -59,7 +59,7 @@
                 <p id="DescriptionContest"><b>Жанр:</b> Ужасы <p>
                 <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ items.description|cut:"<p>"|cut:"</p>"|slice:items.td }}{% endautoescape %}<p>
                 <p id="DescriptionContest"><b>Дата завершения:</b> {{ items.startdate }} <p>
-                <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
+                <div class="pull-right"><a  href="http://{{ request.META.HTTP_HOST }}{{ items.get_absolute_url }}"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
             </div>
 
         </div>
@@ -77,7 +77,7 @@
                     <p id="DescriptionContest"><b>Жанр:</b> Ужасы <p>
                     <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ contest.0.description|cut:"<p>"|cut:"</p>"|slice:contest.0.td }}{% endautoescape %}<p>
                     <p id="DescriptionContest"><b>Дата завершения:</b> {{ contest.0.startdate }} <p>
-                    <div class="pull-right"><a  href="/contest/"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
+                    <div class="pull-right"><a  href="http://{{ request.META.HTTP_HOST }}{{ contest.0.get_absolute_url }}"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
                 </div>
 
             </div>
