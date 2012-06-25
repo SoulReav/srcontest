@@ -56,6 +56,14 @@
                     {% csrf_token %}
                         <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказаться...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </form>
+                    <hr>
+
+                    <form enctype="multipart/form-data" method="post" action="/contest/upload/{{ contest.id }}/">{% csrf_token %}
+                       <input type="file">
+                        <button type="submit">Test</button>
+                    </form>
+
+
                 {% else %}
                     <form method="POST" action="/contest/sign/{{ contest.id }}/">
                     {% csrf_token %}

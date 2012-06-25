@@ -29,3 +29,6 @@ def contUnSign (request, id):
         contest =  Contest.objects.all()[int(id)-1]
         contest.contestants.remove(request.user)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def contUpload (request, id):
+    print request.FILES['file'].read()
