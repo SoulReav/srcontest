@@ -20,25 +20,23 @@ class Works(models.Model):
 def delete_file(sender, **kwargs):
     mf = kwargs.get("instance")
     mf.file.delete(save=False)
-
 post_delete.connect(delete_file, Works)
 
 class Contest(models.Model):
     title = models.CharField(max_length=140, verbose_name=u'Заголовок конкурса')
+    indexlogo = models.CharField(max_length=140, verbose_name=u'Картинка к слайдеру')
     imglogo = models.CharField(max_length=140, verbose_name=u'Картинка к заголовку')
     description = tinymce_model.HTMLField(verbose_name=u'Описание')
     genre = models.CharField(max_length=140,verbose_name=u'Жанр')
     startdate = models.DateField(verbose_name=u'Дата старта')
     enddate = models.DateField(verbose_name=u'Дата завершения')
-    contestants = models.ManyToManyField(User)
-    works = models.ManyToManyField(Works, null=True, blank=True)
+    contestants = models.ManyToManyField(User, null=True, blank=True, verbose_name=u'Участники')
+    works = models.ManyToManyField(Works, null=True, blank=True, verbose_name=u'Работы участников')
     st = ((u'CT', u'Contest'),
           (u'MD', u'Moderate'),
           (u'VT', u'Vote'),
           (u'CM', u'Completed'),)
-    stage = models.CharField(max_length=2, choices=st)
-    moderate = models.BooleanField(default=False)
-
+    stage = models.CharField(max_length=2, choices=st, verbose_name=u'Этапы')
 
     def __unicode__(self):
         return self.title

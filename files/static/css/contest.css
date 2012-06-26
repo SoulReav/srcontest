@@ -107,3 +107,13 @@
 {
     margin-bottom: 0px;
 }
+
+#navigate-bar
+{
+
+    padding: 4px 14px;
+    border: 0px solid #DDDDDD;
+    background-image:none;
+    margin: 0px 0px 6px;
+    margin-top: -16px;
+}

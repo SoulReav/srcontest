@@ -11,10 +11,22 @@
 
 {% block middle-bar %}
     <div class = "span8">
+
         <div class="white-block">
             <p id="Title">Конкурс № {{ contest.id }}: {{ contest.title }}</p>
+
+            <ul class="breadcrumb" id="navigate-bar">
+                <li>
+                    <a href="/">На главную</a> <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="#">Конкурсы</a> <span class="divider">/</span>
+                </li>
+                <li class="active">{{ contest.title }}</li>
+            </ul>
+
             <a href="/"><img id="large-logo" src="{{ contest.imglogo }}"/></a>
-            <p class="basic-text"><b>Описание: </b>{% autoescape off %}{{ contest.description }}{% endautoescape %}</p>
+            <p class="basic-text"><b>Описание: </b>{{ contest.Tdescription }}</p>
 
             <p class="basic-text"><b>Обязательные условия:</b></p>
                 <ul>

@@ -24,8 +24,7 @@ def contestPage(request, year, month, day, id):
     cut = contest.description.find('<!--more-->')
     if cut != -1:
         contest.PM = contest.description[cut+11:]
-        contest.description = contest.description[0:cut]
-
+        contest.Tdescription = contest.description[3:cut]
     print(contest.works.all())
 
     uploaded = False
