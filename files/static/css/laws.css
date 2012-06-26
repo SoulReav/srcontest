@@ -33,6 +33,7 @@
 {
     margin-top: 7px;
     margin-bottom: 12px;
+    margin-left: 155px;
     font-family: "Century Gothic", "HelveticaNeue";
 }
 
@@ -111,4 +112,10 @@
 #fileform
 {
     margin-bottom: 0px;
+}
+
+#miniLogo
+{
+    position:absolute;
+
 }
