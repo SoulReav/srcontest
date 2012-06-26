@@ -28,12 +28,14 @@ font-family: "Century Gothic", "HelveticaNeue";
 {
 	margin-top: 2px;
 	margin-bottom: -2px;
+    margin-left: 155px;
 }
 
 #TopInfoBar
 {
 	margin-top: 7px;
 	margin-bottom: 12px;
+    margin-left: 155px;
 	font-family: "Century Gothic", "HelveticaNeue";
 }
 
@@ -393,3 +395,8 @@ width: 100%;
     width: 90%;
 }
 
+#miniLogo
+{
+    position:absolute;
+
+}

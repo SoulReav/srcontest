@@ -33,6 +33,7 @@
 {
     margin-top: 7px;
     margin-bottom: 12px;
+    margin-left: 155px;
     font-family: "Century Gothic", "HelveticaNeue";
 }
 
@@ -116,4 +117,14 @@
     background-image:none;
     margin: 0px 0px 6px;
     margin-top: -16px;
+}
+
+#miniLogo
+{
+    position:absolute;
+
+}
+
+.terms-li{
+    padding: 5px;
 }

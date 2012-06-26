@@ -51,14 +51,14 @@
         <div class="items">
 
             <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
-                <a href="/"><img id="logo" src="{{ STATIC_URL }}img/image.jpg"/></a>
+                <a href="/"><img id="logo" src="{{ items.indexlogo }}"/></a>
             </div>
 
             <div id= "m-top" class = "span7">
                 <H2 id="TitleContest" >Текущий конкурс: {{ items.title }}</H2>
-                <p id="DescriptionContest"><b>Жанр:</b> Ужасы <p>
+                <p id="DescriptionContest"><b>Жанр:</b> {{ items.genre }} <p>
                 <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ items.description|cut:"<p>"|cut:"</p>"|slice:items.td }}{% endautoescape %}<p>
-                <p id="DescriptionContest"><b>Дата завершения:</b> {{ items.startdate }} <p>
+                <p id="DescriptionContest"><b>Дата завершения:</b> {{ items.enddate }} <p>
                 <div class="pull-right"><a  href="http://{{ request.META.HTTP_HOST }}{{ items.get_absolute_url }}"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
             </div>
 
@@ -69,14 +69,14 @@
             <div class="items">
 
                 <div id= "m-top" class = "span5" id="logo-bar" name="logo-bar">
-                    <a href="/"><img id="logo" src="{{ STATIC_URL }}img/image.jpg"/></a>
+                    <a href="/"><img id="logo" src="{{ contest.0.indexlogo }}"/></a>
                 </div>
 
                 <div id= "m-top" class = "span7">
                     <H2 id="TitleContest" >Текущий конкурс: {{ contest.0.title }}</H2>
-                    <p id="DescriptionContest"><b>Жанр:</b> Ужасы <p>
+                    <p id="DescriptionContest"><b>Жанр:</b> {{ contest.0.genre }} <p>
                     <p id="DescriptionContest"><b>Описание:</b> {% autoescape off %}{{ contest.0.description|cut:"<p>"|cut:"</p>"|slice:contest.0.td }}{% endautoescape %}<p>
-                    <p id="DescriptionContest"><b>Дата завершения:</b> {{ contest.0.startdate }} <p>
+                    <p id="DescriptionContest"><b>Дата завершения:</b> {{ contest.0.enddate }} <p>
                     <div class="pull-right"><a  href="http://{{ request.META.HTTP_HOST }}{{ contest.0.get_absolute_url }}"><h6 id="links">&ensp;&ensp;Подробнее \ Участвовать &ensp;&ensp;</h6></a></div>
                 </div>
 

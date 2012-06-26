@@ -26,19 +26,19 @@
             </ul>
 
             <a href="/"><img id="large-logo" src="{{ contest.imglogo }}"/></a>
-            <p class="basic-text"><b>Описание: </b>{{ contest.Tdescription }}</p>
+            <p class="basic-text"><b>Описание: </b> {% autoescape off %}{{ contest.Tdescription }}{% endautoescape %}</p>
 
             <p class="basic-text"><b>Обязательные условия:</b></p>
                 <ul>
                     {% for items in terms %}
-                    <li>{{ items.text }}</li>
+                    <li class="terms-li">{% autoescape off %}{{ items.text|linebreaks }}{% endautoescape %}</li>
                     {% endfor %}
                 </ul>
             <p></p>
             <p class="basic-text"><b>Приветствуется:</b></p>
             <ul>
                 {% for items in extra %}
-                    <li>{{ items.text }}</li>
+                    <li class="terms-li">{% autoescape off %}{{ items.text|linebreaks }}{% endautoescape %}</li>
                 {% endfor %}
             </ul>
 
@@ -88,7 +88,11 @@
             <p class="basic-text"><b>Дата окончания конкурса: </b> {{ contest.enddate }}</p>
 
             <hr>
+            {% if contestants  %}
             <p class="basic-text"><b>Текущие участники: </b>{{ contestants }}</p>
+            {% else %}
+            <p class="basic-text"><b>Текущие участники: </b>Отсутствуют</p>
+            {% endif %}
             <hr>
 
             {% if user.is_authenticated %}
