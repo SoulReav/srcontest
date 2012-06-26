@@ -2,7 +2,7 @@
 {% load srcomments_tags %}
 
 {% block styles %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/contest.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/contest.css" xmlns="http://www.w3.org/1999/html">
 {% endblock %}
 
 {% block scripts %}
@@ -57,13 +57,20 @@
                         <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказаться...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </form>
                     <hr>
-
-                    <form enctype="multipart/form-data" method="post" action="/contest/upload/{{ contest.id }}/">{% csrf_token %}
-                       <input type="file">
-                        <button type="submit">Test</button>
+                    {% if not uploaded %}
+                    <p class="basic-text">Загрузите вашу работу в формате <b>.RTF</b></p>
+                    <p class="basic-text"><b>Внимание!</b> Работу можно отправить только один раз. Будьте уверены в том, что загружаете.</p>
+                    <form action="/contest/upload/{{ contest.id }}/" method="post" enctype="multipart/form-data" id="fileform">
+                        {% csrf_token %}
+                        <input type="file" name="file" SIZE=17 />
+                        <input type="submit" value="Загрузить" />
                     </form>
 
+                   {% else %}
 
+                   <p class="basic-text">Ваша работа загружена, и принята к рассмотрению. Спасибо за участие!</p>
+
+                   {% endif %}
                 {% else %}
                     <form method="POST" action="/contest/sign/{{ contest.id }}/">
                     {% csrf_token %}

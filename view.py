@@ -39,8 +39,8 @@ def login(request, error):
         return HttpResponse(u'Спасибо что зашли %s ' % request.user.username)
 
     if request.method == 'POST':
-        username = request.POST['login'].lower()
-        password = request.POST['password'].lower()
+        username = request.POST['login']
+        password = request.POST['password']
         user = auth.authenticate(username = username, password=password)
         if user is not None and user.is_active:
             auth.login(request, user)

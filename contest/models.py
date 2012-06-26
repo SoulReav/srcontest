@@ -6,7 +6,7 @@ from tinymce import models as tinymce_model
 
 def make_upload_path(instance, filename):
     """Generates upload path for FileField"""
-    return u"uploads/%st/%s" % ('test',filename)
+    return u"uploads/%s/%s" % (instance.title,instance.user.username+'.rtf')
 
 class Works(models.Model):
     title = models.CharField(max_length=140)
@@ -21,7 +21,7 @@ class Contest(models.Model):
     startdate = models.DateField(verbose_name=u'Дата старта')
     enddate = models.DateField(verbose_name=u'Дата завершения')
     contestants = models.ManyToManyField(User)
-    works = models.ForeignKey(Works, null=True, blank=True)
+    works = models.ManyToManyField(Works, null=True, blank=True)
     moderate = models.BooleanField(default=False)
 
     def __unicode__(self):
