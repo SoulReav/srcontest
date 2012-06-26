@@ -25,7 +25,7 @@
 <div id= "Top">
 	<div class = "container">
 	{% if user.is_authenticated %}
-	<div class="pull-left"><h6 id="TopInfoBar">Добро пожаловать, {{ user.username }}.&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Профиль</a>&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Выйти?</a></h6></div>
+	<div class="pull-left"><h6 id="TopInfoBar">Добро пожаловать, {{ user.username }}.&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Выйти?</a></h6></div>
 
 	{% else %}
 		<form method="POST" action="/accounts/login/" class="pull-left" id="AuthForm" onKeyUp = 'SubmFunc(event)'>
@@ -35,7 +35,7 @@
 		</form>
 	{% endif %}
 	
-	<div class="pull-right"><h6 id="TopInfoBar">Карта сайта:&ensp;&ensp;|&ensp;&ensp;<a id="links" href="/accounts/logout/">Конкурсы</a>&ensp;&ensp;|&ensp;&ensp;<a id="links" href="/accounts/logout/">Правила</a>&ensp;&ensp;|&ensp;&ensp;<a id="links" href="/accounts/logout/">ТОП</a>&ensp;&ensp;|</h6></div>
+	<div class="pull-right"><h6 id="TopInfoBar">Карта сайта:&ensp;&ensp;|&ensp;&ensp;<a id="links" href="#">Конкурсы</a>&ensp;&ensp;|&ensp;&ensp;<a id="links" href="/laws/">Правила</a>&ensp;&ensp;|</h6></div>
 	</div>
 </div>
 

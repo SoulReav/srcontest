@@ -16,6 +16,7 @@ class Works(models.Model):
 
 class Contest(models.Model):
     title = models.CharField(max_length=140, verbose_name=u'Заголовок конкурса')
+    imglogo = models.CharField(max_length=140, verbose_name=u'Картинка к заголовку')
     description = tinymce_model.HTMLField(verbose_name=u'Описание')
     genre = models.CharField(max_length=140,verbose_name=u'Жанр')
     startdate = models.DateField(verbose_name=u'Дата старта')

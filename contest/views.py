@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from contest.models import *
+import datetime
 
 def handle_uploaded_file(f):
     destination = open('files/media/uploads/1.txt', 'wb+')
@@ -30,6 +31,15 @@ def contestPage(request, year, month, day, id):
     for i in contest.works.all():
         if i.user == request.user:
             uploaded = True
+
+    now = datetime.datetime.now().date()
+
+    if contest.enddate <= now:
+        contest.moderate = True
+        contest.save()
+    else:
+        contest.moderate = False
+        contest.save()
 
     return render_to_response('contest.html',{'contest':contest, 'terms':terms, 'extra':extra, 'contestants':contestants, 'uploaded': uploaded}, RequestContext(request))
 

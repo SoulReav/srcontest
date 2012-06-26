@@ -12,6 +12,9 @@ def descriptionView(request, year, month, day, id):
     descriptionNews = News.objects.get(id=id)
     return render_to_response('description.html', {'detail_news':descriptionNews}, RequestContext(request))
 
+def laws(request):
+    return render_to_response('laws.html', RequestContext(request))
+
 def main(request):
     public_news= News.objects.order_by('-dateCreated').filter(publish=True)[0:5]
     for p in public_news:

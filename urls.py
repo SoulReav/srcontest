@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from view import main, login, logout, descriptionView
+from view import main, login, logout, descriptionView, laws
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^$', main, name ='index'),
     (r'^accounts/login/(?P<error>([a-z]{1,5})?)(/)?$', login),
     (r'^accounts/logout/', logout),
+    (r'^laws/$', laws),
     (r'^news/(?P<year>(\d){4})(/)(?P<month>(\d){2})(/)(?P<day>(\d){2})(/)(?P<id>(\d)+)(/)?$', descriptionView),
     (r'^contest/(?P<year>(\d){4})(/)(?P<month>(\d){2})(/)(?P<day>(\d){2})(/)(?P<id>(\d)+)(/)?$', contestPage),
     (r'^contest/sign/(?P<id>(\d)+)(/)?$', contSign),

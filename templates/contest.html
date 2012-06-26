@@ -13,7 +13,7 @@
     <div class = "span8">
         <div class="white-block">
             <p id="Title">Конкурс № {{ contest.id }}: {{ contest.title }}</p>
-            <a href="/"><img id="large-logo" src="{{ STATIC_URL }}img/image1.jpg"/></a>
+            <a href="/"><img id="large-logo" src="{{ contest.imglogo }}"/></a>
             <p class="basic-text"><b>Описание: </b>{% autoescape off %}{{ contest.description }}{% endautoescape %}</p>
             <hr>
             <p class="basic-text"><b>Обязательные условия:</b></p>
@@ -46,7 +46,12 @@
         <div class="white-block">
             <p class="basic-text"><b>Жанр: </b>{{ contest.genre }}</p>
             <p class="basic-text"><b>Дата начала конкурса: </b> {{ contest.startdate }}</p>
-            <p class="basic-text"><b>Дата завершения конкурса: </b> {{ contest.enddate }}</p>
+            {% if not contest.moderate %}
+            <p class="basic-text"><b>Дата окончания конкурса: </b> {{ contest.enddate }}</p>
+            {% else %}
+            <p class="basic-text"><b>Дата окончания конкурса: </b> {{ contest.enddate }}</p>
+            <p class="basic-text" style="color:red;"><b>Конкурс завершен!</b></p>
+            {% endif %}
             <hr>
             <p class="basic-text"><b>Текущие участники: </b>{{ contestants }}</p>
             <hr>
@@ -54,7 +59,11 @@
                 {% if user in contest.contestants.all %}
                     <form method="POST" action="/contest/unsign/{{ contest.id }}/">
                     {% csrf_token %}
+                        {% if not contest.moderate %}
                         <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказаться...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                        {% else %}
+                        <button class="btn btn-warning" disabled="disabled" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказаться...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                        {% endif %}
                     </form>
                     <hr>
                     {% if not uploaded %}
