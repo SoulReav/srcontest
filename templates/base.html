@@ -25,7 +25,7 @@
 <div id= "Top">
 	<div class = "container">
 	{% if user.is_authenticated %}
-	<div class="pull-left"><a href="/"><img id="miniLogo" src="{{ STATIC_URL }}img/Безимени-2.jpg"></a><h6 id="TopInfoBar">|&ensp;&ensp;Добро пожаловать, {{ user.username }}.&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Выйти?</a></h6></div>
+	<div class="pull-left"><a href="/"><img id="miniLogo" src="{{ STATIC_URL }}img/sitelogo.jpg"></a><h6 id="TopInfoBar">|&ensp;&ensp;Добро пожаловать, {{ user.username }}.&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Выйти?</a></h6></div>
 
 	{% else %}
         <img id="miniLogo" src="{{ STATIC_URL }}img/Безимени-2.jpg">
