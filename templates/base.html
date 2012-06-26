@@ -28,7 +28,7 @@
 	<div class="pull-left"><a href="/"><img id="miniLogo" src="{{ STATIC_URL }}img/sitelogo.jpg"></a><h6 id="TopInfoBar">|&ensp;&ensp;Добро пожаловать, {{ user.username }}.&ensp;&ensp;|&ensp;&ensp;<a  href="/accounts/logout/">Выйти?</a></h6></div>
 
 	{% else %}
-        <img id="miniLogo" src="{{ STATIC_URL }}img/Безимени-2.jpg">
+        <img id="miniLogo" src="{{ STATIC_URL }}img/sitelogo.jpg">
 		<form method="POST" action="/accounts/login/" class="pull-left" id="AuthForm" onKeyUp = 'SubmFunc(event)'>
 		{% csrf_token %}
 			<input class="input-medium" type="text" name="login" placeholder="Пользователь"/>
