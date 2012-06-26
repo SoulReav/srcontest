@@ -15,6 +15,11 @@ def handle_uploaded_file(f):
         destination.write(chunk)
     destination.close()
 
+def allContest (request):
+    contest = Contest.objects.all()
+    return render_to_response('allcontest.html',{'contest':contest}, RequestContext(request))
+
+
 def contestPage(request, year, month, day, id):
     contest = Contest.objects.all()[int(id)-1]
     contestants = ", ".join([items.username for items in contest.contestants.all()])

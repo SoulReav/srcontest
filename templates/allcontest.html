@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load srcomments_tags %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/laws.css" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block middle-bar %}
+    <div class = "span8">
+        <div class="white-block">
+
+            <h6>Таблица всех прошедших конкурсов на данный момент</h6>
+            <p></p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Название конкурса</th>
+                    <th>Дата завершения</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for items in contest %}
+                    <tr>
+                        <td>{{ items.id }}</td>
+                        <td><a href="{{ items.get_absolute_url }}">{{ items.title }}</a></td>
+                        <td>{{ items.enddate }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+        {% show_srcomments %}
+    <p style="margin-bottom: 490px;"></p>
+
+    </div>
+
+
+    <div class = "span4">
+
+    </div>
+
+{% endblock %}
