@@ -5,7 +5,6 @@ from django.contrib import auth
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from contest.models import *
-from contest.forms import DocumentForm
 
 def handle_uploaded_file(f):
     destination = open('files/media/uploads/1.txt', 'wb+')
