@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.core.files.base import ContentFile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -34,12 +36,13 @@ def contestPage(request, year, month, day, id):
 
     now = datetime.datetime.now().date()
 
-    if contest.enddate <= now:
-        contest.moderate = True
-        contest.save()
-    else:
-        contest.moderate = False
-        contest.save()
+    if contest.stage <> 'VT' and contest.stage <> 'CM':
+        if contest.enddate <= now:
+            contest.stage = 'MD'
+            contest.save()
+        else:
+            contest.stage = 'CT'
+            contest.save()
 
     return render_to_response('contest.html',{'contest':contest, 'terms':terms, 'extra':extra, 'contestants':contestants, 'uploaded': uploaded}, RequestContext(request))
 
@@ -53,6 +56,9 @@ def contUnSign (request, id):
     if request.user.is_authenticated():
         contest =  Contest.objects.all()[int(id)-1]
         contest.contestants.remove(request.user)
+        if contest.works.count() <> 0:
+            i = contest.works.get(user = request.user)
+            i.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 def contUpload (request, id):
@@ -60,9 +66,18 @@ def contUpload (request, id):
         contest = Contest.objects.get(id=id)
         works = Works()
         works.user = request.user
-        works.title = str(id)
+        works.patch = str(id)
+        works.title = request.POST['work-title']
+        if request.FILES['file'].name[-3:] <> 'rtf':
+           return HttpResponse('Не верный формат загружаемого файла. Поддерживается только .RTF')
         file_content = ContentFile(request.FILES['file'].read())
         works.file.save(request.FILES['file'].name, file_content)
         contest.works.add(works)
         # Redirect to the document list after POST
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def contDelete (request,id):
+    contest = Contest.objects.get(id=id)
+    i = contest.works.get(user = request.user)
+    i.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])

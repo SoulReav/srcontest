@@ -3,16 +3,25 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce import models as tinymce_model
+from django.db.models.signals import post_delete
 
 def make_upload_path(instance, filename):
     """Generates upload path for FileField"""
-    return u"uploads/%s/%s" % (instance.title,instance.user.username+'.rtf')
+    return u"uploads/%s/%s" % (instance.patch,instance.user.username+'.rtf')
+
 
 class Works(models.Model):
     title = models.CharField(max_length=140)
     user = models.ForeignKey(User)
     file = models.FileField(upload_to=make_upload_path)
     uploaded_date = models.DateTimeField(auto_now_add=True)
+    patch = models.CharField(max_length=140)
+
+def delete_file(sender, **kwargs):
+    mf = kwargs.get("instance")
+    mf.file.delete(save=False)
+
+post_delete.connect(delete_file, Works)
 
 class Contest(models.Model):
     title = models.CharField(max_length=140, verbose_name=u'Заголовок конкурса')
@@ -23,7 +32,13 @@ class Contest(models.Model):
     enddate = models.DateField(verbose_name=u'Дата завершения')
     contestants = models.ManyToManyField(User)
     works = models.ManyToManyField(Works, null=True, blank=True)
+    st = ((u'CT', u'Contest'),
+          (u'MD', u'Moderate'),
+          (u'VT', u'Vote'),
+          (u'CM', u'Completed'),)
+    stage = models.CharField(max_length=2, choices=st)
     moderate = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return self.title

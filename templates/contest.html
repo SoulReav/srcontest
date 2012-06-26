@@ -15,14 +15,14 @@
             <p id="Title">Конкурс № {{ contest.id }}: {{ contest.title }}</p>
             <a href="/"><img id="large-logo" src="{{ contest.imglogo }}"/></a>
             <p class="basic-text"><b>Описание: </b>{% autoescape off %}{{ contest.description }}{% endautoescape %}</p>
-            <hr>
+
             <p class="basic-text"><b>Обязательные условия:</b></p>
                 <ul>
                     {% for items in terms %}
                     <li>{{ items.text }}</li>
                     {% endfor %}
                 </ul>
-            <hr>
+            <p></p>
             <p class="basic-text"><b>Приветствуется:</b></p>
             <ul>
                 {% for items in extra %}
@@ -30,9 +30,36 @@
                 {% endfor %}
             </ul>
 
-            <hr>
 
             <p class="basic-text"> {% autoescape off %}{{ contest.PM }}{% endautoescape %}</p>
+            {% if contest.stage == "VT" %}
+
+            <p></p>
+            <hr>
+            <h6>Итоговая таблица работ конкурсантов</h6>
+            <p></p>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Имя участника</th>
+                    <th>Название работы</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for items in contest.works.all %}
+                    <tr>
+                        <td>{{ items.id }}</td>
+                        <td>{{ items.user.username }}</td>
+                        <td><a href="{{ items.file.url }}">{{ items.title }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {% endif %}
+
             <hr>
             <div id="share" class="yashare-auto-init" data-yashareL10n="ru" data-yashareLink="http://{{ request.META.HTTP_HOST }}{{ public_news.0.get_absolute_url }}"  data-yashareTitle="Новость на сайте: {{ public_news.0.title }}" data-yashareType="link" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj"></div>
         </div>
@@ -46,49 +73,72 @@
         <div class="white-block">
             <p class="basic-text"><b>Жанр: </b>{{ contest.genre }}</p>
             <p class="basic-text"><b>Дата начала конкурса: </b> {{ contest.startdate }}</p>
-            {% if not contest.moderate %}
             <p class="basic-text"><b>Дата окончания конкурса: </b> {{ contest.enddate }}</p>
-            {% else %}
-            <p class="basic-text"><b>Дата окончания конкурса: </b> {{ contest.enddate }}</p>
-            <p class="basic-text" style="color:red;"><b>Конкурс завершен!</b></p>
-            {% endif %}
+
             <hr>
             <p class="basic-text"><b>Текущие участники: </b>{{ contestants }}</p>
             <hr>
+
             {% if user.is_authenticated %}
                 {% if user in contest.contestants.all %}
-                    <form method="POST" action="/contest/unsign/{{ contest.id }}/">
-                    {% csrf_token %}
-                        {% if not contest.moderate %}
-                        <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказаться...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                        {% else %}
-                        <button class="btn btn-warning" disabled="disabled" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказаться...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                        {% endif %}
-                    </form>
-                    <hr>
-                    {% if not uploaded %}
-                    <p class="basic-text">Загрузите вашу работу в формате <b>.RTF</b></p>
-                    <p class="basic-text"><b>Внимание!</b> Работу можно отправить только один раз. Будьте уверены в том, что загружаете.</p>
-                    <form action="/contest/upload/{{ contest.id }}/" method="post" enctype="multipart/form-data" id="fileform">
+                    {% if contest.stage == "CT" %}
+                        <form method="POST" action="/contest/unsign/{{ contest.id }}/">
                         {% csrf_token %}
-                        <input type="file" name="file" SIZE=17 />
-                        <input type="submit" value="Загрузить" />
-                    </form>
+                            <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказаться...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                        </form>
+                        <hr>
 
-                   {% else %}
+                        {% if not uploaded %}
 
-                   <p class="basic-text">Ваша работа загружена, и принята к рассмотрению. Спасибо за участие!</p>
+                            <p class="basic-text"><b>Название вашей работы:</b></p>
+                            <form action="/contest/upload/{{ contest.id }}/" method="post" enctype="multipart/form-data" id="fileform">
+                                {% csrf_token %}
+                                <input class="input-large" type="text" name="work-title" placeholder="Введите название"/>
+                                <p class="basic-text">Загрузите вашу работу в формате <b>.RTF</b></p>
+                                <input type="file" name="file" SIZE=17 />
+                                <input type="submit" value="Загрузить" />
+                            </form>
 
-                   {% endif %}
+                        {% else %}
+
+                            <p class="basic-text">Ваша работа загружена, и принята к рассмотрению. Спасибо за участие!</p>
+                            <a class="basic-text" href="/contest/delete/{{ contest.id }}/">Удалить загруженный файл?</a>
+
+                        {% endif %}
+                    {% endif %}
+                    {% if contest.stage == "MD" %}
+                        <p class="basic-text" style="color: red;"><b>Конкурс завершен.</b></p>
+                        <p class="basic-text">Работы переданы администратору для просмотра, и модерации.</p>
+                        <p class="basic-text">По окончанию проверки таблица с работами участников станет доступна всем желающим.</p>
+                    {% endif %}
+                    {% if contest.stage == "VT" %}
+                        <p class="basic-text" style="color: red;"><b>Конкурс завершен.</b></p>
+                        <p class="basic-text">Спасибо за участие!</p>
+                        <p class="basic-text">Работа с таблицами участников конкурса, а также панель голосования доступны слева.</p>
+                    {% endif %}
+
                 {% else %}
-                    <form method="POST" action="/contest/sign/{{ contest.id }}/">
-                    {% csrf_token %}
-                        <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Участвовать!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    </form>
+
+                    {% if contest.stage == "CT" %}
+                        <form method="POST" action="/contest/sign/{{ contest.id }}/">
+                        {% csrf_token %}
+                            <button class="btn btn-warning" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Участвовать!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                        </form>
+                    {% endif %}
+                    {% if contest.stage == "MD" %}
+                        <p class="basic-text" style="color: red;"><b>Конкурс завершен.</b></p>
+                        <p class="basic-text">Работы переданы администратору для просмотра, и модерации.</p>
+                        <p class="basic-text">По окончанию проверки таблица с работами участников станет доступна всем желающим.</p>
+                    {% endif %}
+                    {% if contest.stage == "VT" %}
+                        <p class="basic-text" style="color: red;"><b>Конкурс завершен.</b></p>
+                        <p class="basic-text">Работа с таблицами участников конкурса доступна слева. Только участник конкурса имеет доступ к голосованию.</p>
+                    {% endif %}
+
                  {% endif %}
 
             {% endif %}
-        </div>
+         </div>
     </div>
 
 {% endblock %}

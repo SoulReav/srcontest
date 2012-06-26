@@ -10,7 +10,15 @@ from contest.models import Contest
 
 def descriptionView(request, year, month, day, id):
     descriptionNews = News.objects.get(id=id)
-    return render_to_response('description.html', {'detail_news':descriptionNews}, RequestContext(request))
+    contest = []
+    for i in range(0,3):
+        try:
+            item = Contest.objects.all()[i]
+            item.td = str(item.description.find('</p>')-1)
+            contest.append(item)
+        except:
+            contest.append(u'Отсутствует')
+    return render_to_response('description.html', {'detail_news':descriptionNews, 'contest':contest}, RequestContext(request))
 
 def laws(request):
     return render_to_response('laws.html', RequestContext(request))
